@@ -22,7 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b6f7fe6-5108-488a-aa28-4c36d33ca1d5" name="Default Changelist" comment="" />
+    <list default="true" id="7b6f7fe6-5108-488a-aa28-4c36d33ca1d5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,6 +55,7 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "/Users/ajajooz1234/Desktop/scroll_date_picker",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -61,6 +64,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/lib/src" />
       <recent name="$PROJECT_DIR$/lib/src/utils" />
       <recent name="$PROJECT_DIR$/lib/src/widgets" />
