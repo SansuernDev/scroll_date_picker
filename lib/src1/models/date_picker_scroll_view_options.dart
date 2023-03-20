@@ -5,15 +5,11 @@ class DatePickerScrollViewOptions {
     this.year = const ScrollViewDetailOptions(margin: EdgeInsets.all(4)),
     this.month = const ScrollViewDetailOptions(margin: EdgeInsets.all(4)),
     this.day = const ScrollViewDetailOptions(margin: EdgeInsets.all(4)),
-    this.mainAxisAlignment = MainAxisAlignment.center,
-    this.crossAxisAlignment = CrossAxisAlignment.center,
   });
 
   final ScrollViewDetailOptions year;
   final ScrollViewDetailOptions month;
   final ScrollViewDetailOptions day;
-  final MainAxisAlignment mainAxisAlignment;
-  final CrossAxisAlignment crossAxisAlignment;
 
   // Applies the given [ScrollViewDetailOptions] to all three options ie. year, month and day.
   static DatePickerScrollViewOptions all(ScrollViewDetailOptions value) {
@@ -31,9 +27,9 @@ class ScrollViewDetailOptions {
     this.alignment = Alignment.centerLeft,
     this.margin,
     this.selectedTextStyle =
-        const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        const TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: Color(0xFF000000)),
     this.textStyle =
-        const TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+        const TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: Color(0xFF000000)),
   });
 
   /// The text printed next to the year, month, and day.

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_date_picker/scroll_date_picker.dart';
-import 'package:scroll_date_picker/src/widgets/date_scroll_view.dart';
+import 'package:scroll_date_picker/src1/widgets/date_scroll_view.dart';
+
 
 import 'utils/get_monthly_date.dart';
 
@@ -230,16 +231,7 @@ class _ScrollDatePickerState extends State<ScrollDatePicker> {
   List<Widget> _getScrollDatePicker() {
     _initDateScrollView();
     switch (widget.locale.languageCode) {
-      case zh:
-      case ko:
-        return [_yearScrollView, _monthScrollView, _dayScrollView];
-      case vi:
-      case id:
       case th:
-      case de:
-      case es:
-      case nl:
-      case fr:
         return [_dayScrollView, _monthScrollView, _yearScrollView];
       default:
         return [_monthScrollView, _dayScrollView, _yearScrollView];
@@ -252,11 +244,9 @@ class _ScrollDatePickerState extends State<ScrollDatePicker> {
       alignment: Alignment.center,
       children: [
         Row(
-          mainAxisAlignment: widget.scrollViewOptions.mainAxisAlignment,
-          crossAxisAlignment: widget.scrollViewOptions.crossAxisAlignment,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: _getScrollDatePicker(),
         ),
-        // Date Picker Indicator
         IgnorePointer(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -268,8 +258,8 @@ class _ScrollDatePickerState extends State<ScrollDatePicker> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        widget.options.backgroundColor,
-                        widget.options.backgroundColor.withOpacity(0.7),
+                        const Color(0xFFFFFFFF),
+                        const Color(0xFFFFFFFF).withOpacity(0.16),
                       ],
                     ),
                   ),
@@ -290,8 +280,8 @@ class _ScrollDatePickerState extends State<ScrollDatePicker> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        widget.options.backgroundColor.withOpacity(0.7),
-                        widget.options.backgroundColor,
+                        const Color(0xFFFFFFFF).withOpacity(0.16),
+                        const Color(0xFFFFFFFF),
                       ],
                     ),
                   ),
