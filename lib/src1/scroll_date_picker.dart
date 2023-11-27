@@ -138,52 +138,58 @@ class _ScrollDatePickerState extends State<ScrollDatePicker> {
   }
 
   void _initDateScrollView() {
-    _yearScrollView = DateScrollView(
-        dates: _years,
-        controller: _yearController,
+    _yearScrollView = Expanded(
+      child: DateScrollView(
+          dates: _years,
+          controller: _yearController,
+          options: widget.options,
+          scrollViewOptions: widget.scrollViewOptions.year,
+          selectedIndex: selectedYearIndex,
+          isYearScrollView: true,
+          locale: widget.locale,
+          onChanged: (_) {
+            _onDateTimeChanged();
+            _initMonths();
+            _initDays();
+            if (isYearScrollable) {
+              _monthController.jumpToItem(selectedMonthIndex);
+              _dayController.jumpToItem(selectedDayIndex);
+            }
+            isYearScrollable = true;
+          }),
+    );
+    _monthScrollView = Expanded(
+      child: DateScrollView(
+        dates: widget.locale.months.sublist(_months.first - 1, _months.last),
+        controller: _monthController,
         options: widget.options,
-        scrollViewOptions: widget.scrollViewOptions.year,
-        selectedIndex: selectedYearIndex,
-        isYearScrollView: true,
+        scrollViewOptions: widget.scrollViewOptions.month,
+        selectedIndex: selectedMonthIndex,
+        locale: widget.locale,
+        isMonthScrollView: true,
+        onChanged: (_) {
+          _onDateTimeChanged();
+          _initDays();
+          if (isMonthScrollable) {
+            _dayController.jumpToItem(selectedDayIndex);
+          }
+          isMonthScrollable = true;
+        },
+      ),
+    );
+    _dayScrollView = Expanded(
+      child: DateScrollView(
+        dates: _days,
+        controller: _dayController,
+        options: widget.options,
+        scrollViewOptions: widget.scrollViewOptions.day,
+        selectedIndex: selectedDayIndex,
         locale: widget.locale,
         onChanged: (_) {
           _onDateTimeChanged();
-          _initMonths();
           _initDays();
-          if (isYearScrollable) {
-            _monthController.jumpToItem(selectedMonthIndex);
-            _dayController.jumpToItem(selectedDayIndex);
-          }
-          isYearScrollable = true;
-        });
-    _monthScrollView = DateScrollView(
-      dates: widget.locale.months.sublist(_months.first - 1, _months.last),
-      controller: _monthController,
-      options: widget.options,
-      scrollViewOptions: widget.scrollViewOptions.month,
-      selectedIndex: selectedMonthIndex,
-      locale: widget.locale,
-      isMonthScrollView: true,
-      onChanged: (_) {
-        _onDateTimeChanged();
-        _initDays();
-        if (isMonthScrollable) {
-          _dayController.jumpToItem(selectedDayIndex);
-        }
-        isMonthScrollable = true;
-      },
-    );
-    _dayScrollView = DateScrollView(
-      dates: _days,
-      controller: _dayController,
-      options: widget.options,
-      scrollViewOptions: widget.scrollViewOptions.day,
-      selectedIndex: selectedDayIndex,
-      locale: widget.locale,
-      onChanged: (_) {
-        _onDateTimeChanged();
-        _initDays();
-      },
+        },
+      ),
     );
   }
 
@@ -244,7 +250,6 @@ class _ScrollDatePickerState extends State<ScrollDatePicker> {
       alignment: Alignment.center,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: _getScrollDatePicker(),
         ),
         IgnorePointer(

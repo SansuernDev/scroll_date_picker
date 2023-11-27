@@ -50,6 +50,18 @@ class _MyAppState extends State<MyApp> {
           SizedBox(
             height: 250,
             child: ScrollDatePicker(
+              scrollViewOptions: DatePickerScrollViewOptions(
+                year: ScrollViewDetailOptions(
+                  alignment: Alignment.center,
+                ),
+                month: ScrollViewDetailOptions(
+                  alignment: Alignment.center,
+                ),
+                day: ScrollViewDetailOptions(
+                  alignment: Alignment.center,
+                ),
+              ),
+              options: DatePickerOptions(),
               selectedDate: _selectedDate,
               locale: Locale('en'),
               onDateTimeChanged: (DateTime value) {
