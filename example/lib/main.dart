@@ -50,18 +50,24 @@ class _MyAppState extends State<MyApp> {
           SizedBox(
             height: 250,
             child: ScrollDatePicker(
+              indicatorColor: Colors.red.withOpacity(0.1),
               scrollViewOptions: DatePickerScrollViewOptions(
                 year: ScrollViewDetailOptions(
                   alignment: Alignment.center,
+                  selectedTextStyle: TextStyle(color: Colors.red,fontSize: 18,fontWeight: FontWeight.bold),
                 ),
                 month: ScrollViewDetailOptions(
                   alignment: Alignment.center,
+                  selectedTextStyle: TextStyle(color: Colors.red,fontSize: 18,fontWeight: FontWeight.bold),
                 ),
                 day: ScrollViewDetailOptions(
                   alignment: Alignment.center,
+                  selectedTextStyle: TextStyle(color: Colors.red,fontSize: 18,fontWeight: FontWeight.bold),
                 ),
               ),
-              options: DatePickerOptions(),
+              options: DatePickerOptions(
+                perspective: 0.000000000000001
+              ),
               selectedDate: _selectedDate,
               locale: Locale('en'),
               onDateTimeChanged: (DateTime value) {

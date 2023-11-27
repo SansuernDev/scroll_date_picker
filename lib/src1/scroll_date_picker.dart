@@ -15,7 +15,7 @@ class ScrollDatePicker extends StatefulWidget {
     Locale? locale,
     DatePickerOptions? options,
     DatePickerScrollViewOptions? scrollViewOptions,
-    this.indicator,
+    this.indicator, this.indicatorColor,
   })  : minimumDate = minimumDate ?? DateTime(1960, 1, 1),
         maximumDate = maximumDate ?? DateTime.now(),
         locale = locale ?? const Locale('en'),
@@ -47,6 +47,8 @@ class ScrollDatePicker extends StatefulWidget {
 
   /// Indicator displayed in the center of the ScrollDatePicker
   final Widget? indicator;
+
+  final Color? indicatorColor;
 
   @override
   State<ScrollDatePicker> createState() => _ScrollDatePickerState();
@@ -263,8 +265,9 @@ class _ScrollDatePickerState extends State<ScrollDatePicker> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        const Color(0xFFFFFFFF),
-                        const Color(0xFFFFFFFF).withOpacity(0.16),
+                        const Color(0xFFFFFFFF).withOpacity(0.8),
+                        const Color(0xFFFFFFFF).withOpacity(0.5),
+                        const Color(0xFFFFFFFF).withOpacity(0.2),
                       ],
                     ),
                   ),
@@ -274,7 +277,7 @@ class _ScrollDatePickerState extends State<ScrollDatePicker> {
                   Container(
                     height: widget.options.itemExtent,
                     decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.15),
+                      color: widget.indicatorColor ?? Colors.grey.withOpacity(0.15),
                       borderRadius: const BorderRadius.all(Radius.circular(4)),
                     ),
                   ),
@@ -285,8 +288,9 @@ class _ScrollDatePickerState extends State<ScrollDatePicker> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        const Color(0xFFFFFFFF).withOpacity(0.16),
-                        const Color(0xFFFFFFFF),
+                        const Color(0xFFFFFFFF).withOpacity(0.2),
+                        const Color(0xFFFFFFFF).withOpacity(0.5),
+                        const Color(0xFFFFFFFF).withOpacity(0.8),
                       ],
                     ),
                   ),
