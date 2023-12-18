@@ -215,7 +215,7 @@ class _ScrollDatePickerState extends State<ScrollDatePicker> {
 
   void _initDays() {
     int _maximumDay =
-        getMonthlyDate(year: _selectedDate.year, month: _selectedDate.month);
+        getMonthlyDate(year: _selectedDate.year, month: _selectedDate.month, locale: widget.locale.toString());
     _days = [for (int i = 1; i <= _maximumDay; i++) i];
     if (_selectedDate.year == widget.maximumDate.year &&
         _selectedDate.month == widget.maximumDate.month &&

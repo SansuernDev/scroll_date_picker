@@ -1,11 +1,18 @@
-int getMonthlyDate({required int year, required int month}) {
+// ignore_for_file: unused_local_variable
+
+int getMonthlyDate({required int year, required int month, required String locale}) {
   int day = 0;
+  int customYear = year - 543;
   switch (month) {
     case 1:
       day = 31;
       break;
     case 2:
-      day = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? 29 : 28;
+     if (locale == "en") {
+        day = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? 29 : 28;
+      } else {
+        day = (customYear % 4 == 0 && customYear % 100 != 0) || customYear % 400 == 0 ? 29 : 28;
+      }
       break;
     case 3:
       day = 31;
